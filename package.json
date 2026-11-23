@@ -1,0 +1,43 @@
+{
+  "name": "keyclashr",
+  "private": true,
+  "type": "module",
+  "description": "Real-time 1v1 typing race app",
+  "engines": {
+    "node": "^22.12.0"
+  },
+  "workspaces": [
+    "shared",
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build --workspaces --if-present",
+    "start:prod": "npm run db:deploy && node server/dist/index.js",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json && npm run typecheck --workspaces --if-present",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "npm run test:e2e --workspaces --if-present",
+    "db:migrate": "npm run db:migrate -w @keyclashr/server",
+    "db:deploy": "npm run db:deploy -w @keyclashr/server",
+    "db:seed": "npm run db:seed -w @keyclashr/server",
+    "db:reset": "npm run db:reset -w @keyclashr/server"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.20.5",
+    "@vitest/coverage-v8": "^5.1.1",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.74.0",
+    "vitest": "^5.1.1"
+  }
+}
