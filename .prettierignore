@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+playwright-report
+test-results
+package-lock.json
+# The spec is edited only via `spec:` PRs (§20); don't let `npm run format` rewrite it.
+requirements.md
